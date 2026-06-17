@@ -18,6 +18,7 @@ def naive_search(text, pattern):
     return matches, comparisons
 
 
+
 def compute_lps(pattern):
     m = len(pattern)
     lps = [0] * m
