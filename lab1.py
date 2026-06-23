@@ -58,23 +58,18 @@ tab1, tab2 = st.tabs(["Single Search", "Performance Comparison"])
 
 with tab1:
     st.subheader("Search Demo")
+    
+    # Sample Array
+    arr = [2, 5, 10, 15, 23, 35, 48, 60, 75, 90, 105, 120]
+    
     col1, col2 = st.columns(2)
     
     with col1:
-        demo_mode = st.radio("Choose mode:", ["Sample Array", "Random Array"])
-        
-        if demo_mode == "Sample Array":
-            arr = [2, 5, 10, 15, 23, 35, 48, 60, 75, 90, 105, 120]
-            target = st.number_input("Target value:", value=35, min_value=min(arr), max_value=max(arr))
-        else:
-            size = st.slider("Array size:", 50, 500, 100)
-            arr = sorted(random.sample(range(size * 10), size))
-            target = st.number_input("Target value:", value=arr[len(arr)//2], min_value=min(arr), max_value=max(arr))
+        target = st.number_input("Target value to search:", value=35, min_value=min(arr), max_value=max(arr))
     
     with col2:
-        st.write(f"**Array:** {arr[:10]}{'...' if len(arr) > 10 else ''}")
+        st.write(f"**Array:** {arr}")
         st.write(f"**Array size:** {len(arr)}")
-        st.write(f"**Searching for:** {target}")
     
     col1, col2 = st.columns(2)
     
