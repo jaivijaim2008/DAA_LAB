@@ -68,11 +68,11 @@ def rabin_karp(text, pattern, q=101):
     h = pow(d, m - 1, q)
     p_hash = t_hash = 0
     matches, comparisons = [], 0
-    
+
     for i in range(m):
         p_hash = (d * p_hash + ord(pattern[i])) % q
         t_hash = (d * t_hash + ord(text[i])) % q
-    
+
     for s in range(n - m + 1):
         if p_hash == t_hash:
             for k in range(m):
@@ -99,25 +99,25 @@ tab1, tab2 = st.tabs(["Single Search", "Performance Comparison"])
 
 with tab1:
     st.subheader("Pattern Search Demo")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         text_mode = st.radio("Text source:", ["Sample Text", "Custom Text"])
         if text_mode == "Sample Text":
             text = 'AABAACAADAABAABA'
         else:
             text = st.text_input("Enter text:", "AABAACAADAABAABA")
-    
+
     with col2:
         pattern = st.text_input("Enter pattern:", "AABA")
-    
+
     if text and pattern:
         if len(pattern) > len(text):
             st.error("❌ Pattern cannot be longer than text")
         else:
             col1, col2, col3 = st.columns(3)
-            
+
             with col1:
                 st.write("### Naive Search")
                 try:
@@ -130,7 +130,7 @@ with tab1:
                         st.info("No matches found")
                 except Exception as e:
                     st.error(f"Error: {e}")
-            
+
             with col2:
                 st.write("### KMP Search")
                 try:
@@ -143,7 +143,7 @@ with tab1:
                         st.info("No matches found")
                 except Exception as e:
                     st.error(f"Error: {e}")
-            
+
             with col3:
                 st.write("### Rabin-Karp Search")
                 try:
@@ -156,7 +156,7 @@ with tab1:
                         st.info("No matches found")
                 except Exception as e:
                     st.error(f"Error: {e}")
-            
+
             # Visualization
             st.write("---")
             st.write("### Algorithm Comparison")
@@ -165,62 +165,62 @@ with tab1:
                 'Comparisons': [c1, c2, c3],
                 'Matches': [len(m1), len(m2), len(m3)]
             })
-            
+
             fig = px.bar(comparison, x='Algorithm', y='Comparisons',
                         title='Character Comparisons by Algorithm',
                         color='Algorithm',
                         labels={'Comparisons': 'Number of Comparisons'})
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
 with tab2:
     st.subheader("Performance Analysis (10,000 character text)")
-    
+
     text_large = ''.join(random.choices('ABCD', k=10000))
     patterns = ['AB', 'ABCD', 'ABCDAB', 'ABCDABCD']
-    
+
     results = []
     progress_bar = st.progress(0)
     status_text = st.empty()
-    
+
     for idx, pattern in enumerate(patterns):
         status_text.text(f"Testing pattern: {pattern}...")
-        
+
         _, c1 = naive_search(text_large, pattern)
         _, c2 = kmp_search(text_large, pattern)
         _, c3 = rabin_karp(text_large, pattern)
-        
+
         results.append({
             'Pattern': pattern,
             'Naive': c1,
             'KMP': c2,
             'Rabin-Karp': c3
         })
-        
+
         progress_bar.progress((idx + 1) / len(patterns))
-    
+
     status_text.empty()
     df = pd.DataFrame(results)
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         fig = px.bar(df, x='Pattern', y=['Naive', 'KMP', 'Rabin-Karp'],
                     title='Algorithm Performance Comparison',
                     barmode='group',
                     labels={'value': 'Comparisons', 'Pattern': 'Search Pattern'})
-        st.plotly_chart(fig, use_container_width=True)
-    
+        st.plotly_chart(fig, width='stretch')
+
     with col2:
         st.write("### Results Table")
-        st.dataframe(df, use_container_width=True)
-        
+        st.dataframe(df, width='stretch')
+
         st.write("---")
         st.write("### Summary")
         st.write(f"📊 **Text size:** 10,000 characters (random ABCD)")
-        
+
         best_algo = df[['Naive', 'KMP', 'Rabin-Karp']].sum().idxmin()
         st.write(f"✅ **Best performer:** **{best_algo}** (fewest total comparisons)")
-        
+
         st.write("---")
         st.write("### Algorithm Details")
         st.markdown("""
