@@ -69,6 +69,7 @@ st.markdown(
 st.write("")
 
 col1, col2, col3 = st.columns(3)
+col4, col5 = st.columns(2)
 
 with col1:
     st.markdown("""
@@ -123,6 +124,42 @@ with col3:
     st.write("")
     if st.button("▶  Open Lab 3", key="lab3", use_container_width=True):
         st.switch_page("pages/3_🌳_Lab3_MST_Algorithms.py")
+
+with col4:
+    st.markdown("""
+    <div class="lab-card">
+        <div class="lab-icon">📐</div>
+        <div class="lab-title">Lab 4 — Dijkstra's Shortest Path</div>
+        <div class="lab-desc">
+            Implement <b>Dijkstra's Algorithm</b> to find shortest paths from a single source.
+            Visualize graph relaxations, path reconstruction, and compare performance.
+        </div>
+        <span class="lab-tag">Graph Theory</span>
+        <span class="lab-tag">Greedy</span>
+        <span class="lab-tag">O((V+E) log V)</span>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    if st.button("▶  Open Lab 4", key="lab4", use_container_width=True):
+        st.switch_page("pages/4_📐_Lab4_Dijkstra_Shortest_Path.py")
+
+with col5:
+    st.markdown("""
+    <div class="lab-card">
+        <div class="lab-icon">📊</div>
+        <div class="lab-title">Lab 5 — Min-Max Divide & Conquer</div>
+        <div class="lab-desc">
+            Find <b>min and max</b> simultaneously using Divide & Conquer.
+            Compare 3n/2 - 2 comparisons vs 2(n-1) naive approach with analysis.
+        </div>
+        <span class="lab-tag">Divide & Conquer</span>
+        <span class="lab-tag">O(n)</span>
+        <span class="lab-tag">Optimal</span>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    if st.button("▶  Open Lab 5", key="lab5", use_container_width=True):
+        st.switch_page("pages/5_📊_Lab5_Min_Max_Divide_Conquer.py")
 
 # --- Footer ---
 st.markdown("---")
