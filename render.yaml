@@ -1,9 +1,60 @@
 services:
+  # Main multipage app
   - type: web
     name: daa-lab
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run app.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # Lab 1 - Interpolation Search (standalone)
+  - type: web
+    name: daa-lab1-interpolation-search
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab1.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # Lab 2 - String Matching (standalone)
+  - type: web
+    name: daa-lab2-string-matching
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab2.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # Lab 3 - MST Algorithms (standalone)
+  - type: web
+    name: daa-lab3-mst-algorithms
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab3_app.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # Lab 4 - Dijkstra's Shortest Path (standalone)
+  - type: web
+    name: daa-lab4-dijkstra-shortest-path
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab4_app.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # Lab 5 - Min-Max Divide & Conquer (standalone)
+  - type: web
+    name: daa-lab5-minmax-divide-conquer
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab5_app.py --server.port $PORT --server.headless true
     envVars:
       - key: PYTHON_VERSION
         value: "3.11"
