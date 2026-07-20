@@ -183,6 +183,28 @@ with col6:
     if st.button("▶  Open Lab 6", key="lab6", use_container_width=True):
         st.switch_page("pages/6_🔗_Lab6_Matrix_Chain_Multiplication.py")
 
+# --- Lab 7 Row ---
+st.write("")
+col7, col8 = st.columns(2)
+
+with col7:
+    st.markdown("""
+    <div class="lab-card">
+        <div class="lab-icon">♛</div>
+        <div class="lab-title">Lab 7 — N-Queens Problem</div>
+        <div class="lab-desc">
+            Solve the <b>N-Queens problem</b> using Backtracking.
+            Visualize chessboard placements, backtrack steps, and compare performance across board sizes.
+        </div>
+        <span class="lab-tag">Backtracking</span>
+        <span class="lab-tag">O(N!)</span>
+        <span class="lab-tag">Constraint Satisfaction</span>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    if st.button("▶  Open Lab 7", key="lab7", use_container_width=True):
+        st.switch_page("pages/7_♛_Lab7_N_Queens_Backtracking.py")
+
 # --- Footer ---
 st.markdown("---")
 st.markdown(

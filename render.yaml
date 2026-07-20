@@ -68,3 +68,13 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.11"
+
+  # Lab 7 - N-Queens Backtracking (standalone)
+  - type: web
+    name: daa-lab7-nqueens-backtracking
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab7_app.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
