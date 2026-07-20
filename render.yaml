@@ -58,3 +58,13 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.11"
+
+  # Lab 6 - Matrix Chain Multiplication (standalone)
+  - type: web
+    name: daa-lab6-matrix-chain
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run lab6_app.py --server.port $PORT --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"

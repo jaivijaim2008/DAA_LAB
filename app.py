@@ -161,6 +161,28 @@ with col5:
     if st.button("▶  Open Lab 5", key="lab5", use_container_width=True):
         st.switch_page("pages/5_📊_Lab5_Min_Max_Divide_Conquer.py")
 
+# --- Lab 6 Row ---
+st.write("")
+col6, col7, col8 = st.columns(3)
+
+with col6:
+    st.markdown("""
+    <div class="lab-card">
+        <div class="lab-icon">🔗</div>
+        <div class="lab-title">Lab 6 — Matrix Chain Multiplication</div>
+        <div class="lab-desc">
+            Find the <b>optimal parenthesization</b> to minimize scalar multiplications.
+            Compare <b>DP</b> O(n³) vs <b>Naive</b> O(2ⁿ) with interactive DP table visualization.
+        </div>
+        <span class="lab-tag">Dynamic Programming</span>
+        <span class="lab-tag">O(n³)</span>
+        <span class="lab-tag">Optimization</span>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    if st.button("▶  Open Lab 6", key="lab6", use_container_width=True):
+        st.switch_page("pages/6_🔗_Lab6_Matrix_Chain_Multiplication.py")
+
 # --- Footer ---
 st.markdown("---")
 st.markdown(
